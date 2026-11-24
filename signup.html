@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KindFund - Create Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f5fa;
+      margin: 0;
+      padding: 25px;
+    }
+    .container {
+      max-width: 420px;
+      margin: 50px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+    }
+    h1 { color: #155eef; text-align: center; }
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 9px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #155eef;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    #message { margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>KindFund ❤️</h1>
+  <h2>Create your account</h2>
+
+  <form id="signupForm">
+    <input id="fullName" type="text"
+      placeholder="Full name" required>
+
+    <input id="email" type="email"
+      placeholder="Email address" required>
+
+    <input id="password" type="password"
+      placeholder="Password (minimum 8 characters)"
+      minlength="8" required>
+
+    <button type="submit">Create Account</button>
+  </form>
+
+  <p id="message"></p>
+  <p>Already registered? <a href="login.html">Log in</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseClient = window.supabase.createClient(
+  "https://niiqklhmnhhzrxozijpf.supabase.co",
+  "sb_publishable_KdHO7x3i_uK0G_J1cvwiQg_srZDptUX"
+);
+
+document.getElementById("signupForm")
+.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  const fullName =
+    document.getElementById("fullName").value;
+
+  const email =
+    document.getElementById("email").value;
+
+  const password =
+    document.getElementById("password").value;
+
+  const message = document.getElementById("message");
+
+  message.textContent = "Creating your account...";
+
+  const { data, error } =
+    await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          full_name: fullName
+        },
+        emailRedirectTo:
+          "https://jacksonhuck.github.io/kindfund/"
+      }
+    });
+
+  if (error) {
+    message.textContent = error.message;
+    return;
+  }
+
+  message.textContent =
+    "Account created! Check your email for confirmation.";
+});
+</script>
+
+</body>
+</html>
