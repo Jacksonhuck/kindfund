@@ -1,82 +1,182 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KindFund — Giving help without borders</title>
+<title>KindFund - Help Someone Today</title>
+
 <style>
-:root{--blue:#155eef;--navy:#102a56;--ink:#182230;--muted:#667085;--line:#e5eaf2;--bg:#f7f9fc;--green:#16865b}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
-header{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.nav{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-size:24px;font-weight:800;color:var(--navy);text-decoration:none}.brand span{color:var(--blue)}
-nav{display:flex;gap:18px;align-items:center}nav a{color:#344054;text-decoration:none;font-weight:600;font-size:14px}
-button,.btn{border:0;border-radius:10px;padding:12px 17px;background:var(--blue);color:white;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
-button.secondary,.btn.secondary{background:white;color:var(--navy);border:1px solid var(--line)}
-.hero{background:linear-gradient(120deg,#102a56,#155eef);color:white;padding:66px 20px}
-.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.4fr .8fr;gap:30px;align-items:center}
-.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.08;margin:0 0 16px}.hero p{font-size:18px;color:#e3ebff;max-width:620px}
-.hero-card{background:white;color:var(--ink);border-radius:18px;padding:22px;box-shadow:0 15px 40px #001b5033}
-.hero-card strong{font-size:20px;color:var(--navy)}.hero-card p{font-size:14px;color:var(--muted)}
-main{max-width:1100px;margin:auto;padding:34px 20px 70px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:18px}.section-head h2{margin:0;color:var(--navy);font-size:27px}
-.muted{color:var(--muted);font-size:14px}
-.categories{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 30px}
-.chip{background:white;border:1px solid var(--line);padding:9px 13px;border-radius:30px;font-size:13px;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.art{height:150px;background:linear-gradient(135deg,#dbeafe,#eff6ff);display:flex;align-items:center;justify-content:center;font-size:48px}
-.card-body{padding:17px}.card h3{margin:0 0 8px;color:var(--navy);font-size:18px}.card p{font-size:14px;color:var(--muted);min-height:42px}
-.progress{height:9px;background:#edf1f7;border-radius:20px;overflow:hidden;margin:13px 0 8px}.progress span{height:100%;display:block;background:var(--green);width:0}
-.amounts{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
-form{display:grid;gap:13px}label{font-size:13px;font-weight:700;color:#344054}input,textarea,select{width:100%;padding:12px;border:1px solid #d0d5dd;border-radius:9px;font:inherit;background:white}textarea{min-height:110px;resize:vertical}
-.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:38px}
-.panel h2{margin:0 0 6px;color:var(--navy)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.full{grid-column:1/-1}
-.notice{background:#fff7e6;border:1px solid #f5d48b;color:#7a4b00;padding:13px;border-radius:10px;font-size:13px;margin-top:15px}
-.empty{background:white;border:1px dashed #cbd5e1;border-radius:14px;padding:25px;text-align:center;color:var(--muted)}
-footer{background:#102a56;color:#dbe7ff;padding:28px 20px;text-align:center;font-size:13px}
-@media(max-width:760px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}nav{gap:10px}nav a{font-size:12px}.nav{padding:12px}}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+  color: #243047;
+}
+
+header {
+  background: white;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px #ddd;
+}
+
+.logo {
+  color: #155eef;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a {
+  text-decoration: none;
+  color: #155eef;
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.hero {
+  background: #eaf1ff;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  color: #155eef;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.actions {
+  margin-top: 25px;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 22px;
+  margin: 6px;
+  background: #155eef;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.secondary {
+  background: white;
+  color: #155eef;
+  border: 1px solid #155eef;
+}
+
+.section {
+  max-width: 850px;
+  margin: 45px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.feature {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #ddd;
+}
+
+footer {
+  background: #17233a;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  margin: 8px;
+}
 </style>
 </head>
+
 <body>
-<header><div class="nav"><a class="brand" href="#">Kind<span>Fund</span> ♥</a><nav><a href="#campaigns">Explore</a><a href="#create">Start a fundraiser</a></nav></div></header>
-<section class="hero"><div class="hero-inner">
-<div><h1>Giving help<br>without borders.</h1><p>Bring people together to support personal needs and charitable causes. Every act of kindness can make a difference.</p><a class="btn" href="#create">Start a fundraiser</a> <a class="btn secondary" href="#campaigns">Explore fundraisers</a></div>
-<div class="hero-card"><strong>Your cause deserves to be heard.</strong><p>Create a campaign, explain what help is needed, and share it with your community.</p><div style="font-size:34px">💙 🤝 🌍</div><p class="muted">KindFund is currently a demonstration prototype. Donations are not processed.</p></div>
-</div></section>
-<main>
-<section id="campaigns"><div class="section-head"><div><h2>Explore fundraisers</h2><div class="muted">Discover causes shared by the community.</div></div></div>
-<div class="categories"><span class="chip">All causes</span><span class="chip">Medical</span><span class="chip">Education</span><span class="chip">Emergency</span><span class="chip">Community</span></div>
-<div id="campaignList" class="grid"></div></section>
-<section id="create" class="panel"><h2>Start a fundraiser</h2><p class="muted">Share the details of the person or cause you want to support.</p>
-<form id="campaignForm"><div class="form-grid">
-<div><label for="title">Fundraiser title *</label><input id="title" required maxlength="80" placeholder="e.g. Help Maria access treatment"></div>
-<div><label for="category">Category *</label><select id="category" required><option value="">Choose a category</option><option>Medical</option><option>Education</option><option>Emergency</option><option>Community</option><option>Other</option></select></div>
-<div><label for="organizer">Organizer name *</label><input id="organizer" required maxlength="60" placeholder="Your name"></div>
-<div><label for="goal">Fundraising goal (USD) *</label><input id="goal" type="number" min="1" step="1" required placeholder="1000"></div>
-<div class="full"><label for="story">Your story *</label><textarea id="story" required maxlength="1500" placeholder="Explain who needs help, what happened, and how donations would be used."></textarea></div>
-<div class="full"><label for="location">Country or location</label><input id="location" maxlength="80" placeholder="e.g. Kampala, Uganda"></div>
-</div><button type="submit">Create demo campaign</button></form>
-<div class="notice"><strong>Important:</strong> This prototype saves campaigns only in this browser on this device. It does not publish them online, verify fundraisers, collect donations, or transfer money. Never enter bank details or sensitive identity documents here.</div>
+
+<header>
+  <div class="logo">KindFund ❤️</div>
+  <nav>
+    <a href="campaigns.html">Explore</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Small Acts. Big Changes.</h1>
+
+  <p>
+    Start a fundraiser, support a cause,
+    and help change lives around the world.
+  </p>
+
+  <div class="actions">
+    <a class="button" href="create-campaign.html">
+      Start Fundraising
+    </a>
+
+    <a class="button secondary" href="campaigns.html">
+      Explore Campaigns
+    </a>
+  </div>
+
+  <p>
+    <a href="signup.html">Create a free account</a>
+  </p>
 </section>
-</main>
-<footer>© 2026 KindFund prototype · Giving help without borders.<br>Not a live fundraising or payment service.</footer>
-<script>
-const starter=[];
-const key='kindfund_demo_campaigns_v1';
-function load(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
-function save(items){localStorage.setItem(key,JSON.stringify(items))}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function render(){
- const items=load();const el=document.getElementById('campaignList');
- if(!items.length){el.innerHTML='<div class="empty" style="grid-column:1/-1">No campaigns yet. Be the first to create a demo fundraiser below.</div>';return}
- el.innerHTML=items.map((c,i)=>`<article class="card"><div class="art">${c.category==='Medical'?'🩺':c.category==='Education'?'📚':c.category==='Emergency'?'🏠':c.category==='Community'?'🤝':'💙'}</div><div class="card-body"><div class="muted">${escapeHtml(c.category)} · ${escapeHtml(c.location||'Location not specified')}</div><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.story.slice(0,115))}${c.story.length>115?'…':''}</p><div class="progress"><span style="width:0%"></span></div><div class="amounts"><b>$0 raised</b><span>Goal: $${Number(c.goal).toLocaleString()}</span></div><p class="muted">Organized by ${escapeHtml(c.organizer)}</p><button class="secondary" onclick="demoDonate()">Donate (demo only)</button></div></article>`).join('');
-}
-function demoDonate(){alert('This is a design demo. No payment will be taken. Real donations require an approved payment provider and a secure live website.')}
-document.getElementById('campaignForm').addEventListener('submit',e=>{
- e.preventDefault();const c={title:document.getElementById('title').value.trim(),category:document.getElementById('category').value,organizer:document.getElementById('organizer').value.trim(),goal:document.getElementById('goal').value,story:document.getElementById('story').value.trim(),location:document.getElementById('location').value.trim()};
- const items=load();items.unshift(c);save(items);e.target.reset();render();document.getElementById('campaigns').scrollIntoView({behavior:'smooth'});alert('Your demo campaign has been added on this device. It is not public online.');
-});
-render();
-</script>
-</body></html>
+
+<section class="section">
+  <h2>How KindFund Works</h2>
+
+  <div class="features">
+
+    <div class="feature">
+      <h2>❤️</h2>
+      <h3>Create a Campaign</h3>
+      <p>Share your story and explain why you need support.</p>
+    </div>
+
+    <div class="feature">
+      <h2>🌍</h2>
+      <h3>Share Worldwide</h3>
+      <p>Share your campaign with friends and communities.</p>
+    </div>
+
+    <div class="feature">
+      <h2>🤝</h2>
+      <h3>Help Others</h3>
+      <p>Discover campaigns and support meaningful causes.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <h2>KindFund ❤️</h2>
+  <p>Connecting people through kindness.</p>
+  <a href="campaigns.html">Explore</a>
+  <a href="signup.html">Join Us</a>
+  <a href="login.html">Login</a>
+  <p>© 2026 KindFund</p>
+</footer>
+
+</body>
+</html>
