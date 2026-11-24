@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KindFund - Login</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f5fa;
+  padding: 25px;
+}
+.container {
+  max-width: 420px;
+  margin: 60px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+}
+h1 {
+  text-align: center;
+  color: #155eef;
+}
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  background: #155eef;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+#message { margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>KindFund ❤️</h1>
+<h2>Welcome Back</h2>
+
+<form id="loginForm">
+<input id="email" type="email"
+placeholder="Email address" required>
+
+<input id="password" type="password"
+placeholder="Password" required>
+
+<button type="submit">Login</button>
+</form>
+
+<p id="message"></p>
+
+<p>New to KindFund?
+<a href="signup.html">Create account</a>
+</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseClient = window.supabase.createClient(
+"https://niiqklhmnhhzrxozijpf.supabase.co",
+"sb_publishable_KdHO7x3i_uK0G_J1cvwiQg_srZDptUX"
+);
+
+document.getElementById("loginForm")
+.addEventListener("submit", async function(event) {
+
+event.preventDefault();
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const message = document.getElementById("message");
+
+message.textContent = "Signing in...";
+
+const { data, error } =
+await supabaseClient.auth.signInWithPassword({
+email: email,
+password: password
+});
+
+if (error) {
+message.textContent = error.message;
+return;
+}
+
+message.textContent = "Login successful!";
+
+window.location.href = "index.html";
+
+});
+</script>
+
+</body>
+</html>
