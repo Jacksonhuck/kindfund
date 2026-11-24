@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create a Campaign - KindFund</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f5fa;
+  padding: 20px;
+}
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+}
+h1 { color: #155eef; }
+input, textarea, select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  margin: 9px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+textarea { min-height: 130px; }
+button {
+  width: 100%;
+  padding: 14px;
+  color: white;
+  background: #155eef;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>KindFund ❤️</h1>
+<h2>Start a Fundraiser</h2>
+
+<form id="campaignForm">
+
+<input id="title" placeholder="Campaign title" required>
+
+<textarea id="story"
+placeholder="Tell your story and why you need help..."
+required></textarea>
+
+<input id="goal" type="number"
+min="1" step="0.01"
+placeholder="Fundraising goal" required>
+
+<select id="currency">
+<option value="USD">USD - US Dollar</option>
+<option value="EUR">EUR - Euro</option>
+<option value="GBP">GBP - British Pound</option>
+<option value="UGX">UGX - Uganda Shilling</option>
+</select>
+
+<input id="country" placeholder="Your country" required>
+
+<button type="submit">Submit Campaign</button>
+
+</form>
+
+<p id="message"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseClient = window.supabase.createClient(
+"https://niiqklhmnhhzrxozijpf.supabase.co",
+"sb_publishable_KdHO7x3i_uK0G_J1cvwiQg_srZDptUX"
+);
+
+document.getElementById("campaignForm")
+.addEventListener("submit", async function(event) {
+
+event.preventDefault();
+
+const message = document.getElementById("message");
+
+message.textContent = "Submitting campaign...";
+
+const { data: { user }, error: authError } =
+await supabaseClient.auth.getUser();
+
+if (authError || !user) {
+message.textContent = "Please log in first.";
+return;
+}
+
+const { error } = await supabaseClient
+.from("campaigns")
+.insert({
+owner_id: user.id,
+title: document.getElementById("title").value,
+story: document.getElementById("story").value,
+goal_amount: Number(document.getElementById("goal").value),
+currency: document.getElementById("currency").value,
+country: document.getElementById("country").value,
+status: "pending_review"
+});
+
+if (error) {
+message.textContent = error.message;
+return;
+}
+
+message.textContent =
+"Campaign submitted successfully for review!";
+
+document.getElementById("campaignForm").reset();
+
+});
+</script>
+
+</body>
+</html>
